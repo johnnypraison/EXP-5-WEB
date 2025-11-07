@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real Estate Listings</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #004aad;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 30px;
+      z-index: 1000;
+    }
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .navbar .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .navbar .nav-links li a:hover {
+      background: #023b86;
+    }
+    .navbar .login-btn {
+      background: white;
+      color: #004aad;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .navbar .login-btn:hover {
+      background: #ddd;
+    }
+
+    /* Landing Page */
+    .landing {
+      height: 100vh;
+      background: url('pic/banner.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 60px;
+    }
+    .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 12px;
+      width: 350px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .login-card h2 {
+      margin-bottom: 20px;
+      color: #004aad;
+    }
+    .login-card label {
+      display: block;
+      text-align: left;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    .login-card input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+    }
+    .login-card input:focus {
+      border-color: #004aad;
+      box-shadow: 0 0 5px rgba(0,74,173,0.5);
+    }
+    .login-card button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #004aad;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-card button:hover {
+      background: #023b86;
+    }
+
+    /* Estate Page */
+    .estate-page {
+      display: none;
+      padding-top: 80px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .listings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+    .listing-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .listing-card:hover {
+      transform: translateY(-5px);
+    }
+    .listing-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .info {
+      padding: 15px;
+    }
+    .price {
+      color: green;
+      font-weight: bold;
+    }
+    .sold {
+      color: red;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #004aad;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">🏠 RealEstate</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Listings</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="login-btn">Login</button>
+  </div>
+
+  <!-- Landing Page with Login -->
+  <section class="landing" id="landing">
+    <div class="login-card">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label>Email</label>
+        <input type="email" required>
+        <label>Password</label>
+        <input type="password" required minlength="6">
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Estate Page -->
+  <main class="estate-page" id="estatePage">
+    <section class="listings">
+      <div class="listing-card">
+        <img src="pic/t1.jpg" alt="House 1">
+        <div class="info">
+          <p><b>Location:</b> Coimbatore</p>
+          <p class="price">₹48,50,000</p>
+          <p>3BHK • 2 Bath • 1800 sqft • 9759258631</p>
+        </div>
+      </div>
+      <div class="listing-card">
+        <img src="pic/h2.jpg" alt="House 2">
+        <div class="info">
+          <p><b>Location:</b> Chennai</p>
+          <p class="price">₹85,50,000</p>
+          <p>4BHK • 3 Bath • 2500 sqft • 9457348631</p>
+        </div>
+      </div>
+      <div class="listing-card">
+        <img src="pic/h3.jpg" alt="House 3">
+        <div class="info">
+          <p><b>Location:</b> Tirunelveli</p>
+          <p class="price">₹39,75,000</p>
+          <p>2BHK • 2 Bath • 1400 sqft • 9445567890</p>
+        </div>
+      </div>
+      <div class="listing-card">
+        <img src="pic/h4.jpg" alt="House 4">
+        <div class="info">
+          <p><b>Location:</b> Madurai</p>
+          <p class="price">₹65,80,000</p>
+          <p>2BHK • 2 Bath • 1500 sqft • 9764548631</p>
+          <p class="sold">SOLD</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Real Estate Listings | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Simple login simulation
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("landing").style.display = "none";
+      document.getElementById("estatePage").style.display = "block";
+    });
+  </script>
+</body>
+</html>
